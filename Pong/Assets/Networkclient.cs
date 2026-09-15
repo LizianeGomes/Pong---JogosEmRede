@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 public class NetworkClient : MonoBehaviour
 {
     [Header("Servidor")]
@@ -233,10 +233,33 @@ public class NetworkClient : MonoBehaviour
 
         if (!gameOver)
         {
-            float inputY =
-                Input.GetAxis("Vertical")
-                * 5f
-                * Time.deltaTime;
+            float inputY = 0f;
+
+            // PLAYER 1 → W / S
+            if (myPlayerId == 1)
+            {
+                if (Keyboard.current.wKey.isPressed)
+                {
+                    inputY = 5f * Time.deltaTime;
+                }
+                else if (Keyboard.current.sKey.isPressed)
+                {
+                    inputY = -5f * Time.deltaTime;
+                }
+            }
+
+            // PLAYER 2 → SETAS ↑ / ↓
+            else if (myPlayerId == 2)
+            {
+                if (Keyboard.current.upArrowKey.isPressed)
+                {
+                    inputY = 5f * Time.deltaTime;
+                }
+                else if (Keyboard.current.downArrowKey.isPressed)
+                {
+                    inputY = -5f * Time.deltaTime;
+                }
+            }
 
             if (Mathf.Abs(inputY) > 0.0001f)
             {

@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcc956fa70656e488f1781a86b8d588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NetworkClient
-  serverIp: 127.0.0.1
+  serverIp: 10.57.1.120
   serverPort: 7777
   ball: {fileID: 1550465081}
   paddle1: {fileID: 1688258742}
